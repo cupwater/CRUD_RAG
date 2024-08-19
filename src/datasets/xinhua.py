@@ -5,6 +5,8 @@ from typing import Any
 
 from src.datasets.base import BaseDataset
 
+from typing import Union
+
 class Xinhua(BaseDataset):
     def __init__(self, data, shuffle: bool = False, seed: int = 22):
         self.data = data
@@ -16,7 +18,7 @@ class Xinhua(BaseDataset):
     def __len__(self) -> int:
         return len(self.data)
 
-    def __getitem__(self, key: int | slice) -> dict | list[dict]:
+    def __getitem__(self, key: Union[int, slice]) -> Union[dict, list[dict]]:
             return self.data[key]
 
     def load(self) -> list[dict]:

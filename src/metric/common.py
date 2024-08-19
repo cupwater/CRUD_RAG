@@ -2,7 +2,7 @@
 # @Email  : song.shichao@outlook.com
 
 
-from typing import Callable
+from typing import Callable, Union
 
 import evaluate
 import jieba
@@ -61,7 +61,7 @@ def kw_precision(
     reference: str,
     kw_extracter: Callable[[str], list[str]],
     with_kw_list: bool = True
-) -> float | tuple[float, list[str], list[str]]:
+) -> Union[float, tuple[float, list[str], list[str]]]:
     """Measure the rationality of a generated continuation sentence with respect to the original news object."""
     kws = kw_extracter(continuation)
     if len(kws) == 0:

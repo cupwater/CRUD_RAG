@@ -26,7 +26,7 @@ parser.add_argument('--embedding_name', default='sentence-transformers/bge-base-
 parser.add_argument('--embedding_dim', type=int, default=768)
 
 # Index related options
-parser.add_argument('--docs_path', default='data/tmp', help="Path to the retrieval documents")
+parser.add_argument('--docs_path', default='data/80000_docs', help="Path to the retrieval documents")
 parser.add_argument('--docs_type', default="txt", help="Type of the documents")
 parser.add_argument('--chunk_size', type=int, default=128, help="Chunk size")
 parser.add_argument('--chunk_overlap', type=int, default=0, help="Overlap chunk size")

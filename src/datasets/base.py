@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+# 
+from typing import Union
 
 
 class BaseDataset(ABC):
@@ -11,7 +13,7 @@ class BaseDataset(ABC):
         ...
 
     @abstractmethod
-    def __getitem__(self, key: int | slice) -> dict | list[dict]:
+    def __getitem__(self, key: Union[int, slice]) -> Union[dict, list[dict]]:
         ...
 
     @abstractmethod
