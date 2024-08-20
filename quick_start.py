@@ -2,7 +2,7 @@ import argparse
 from loguru import logger
 from src.datasets.xinhua import get_task_datasets
 from evaluator import BaseEvaluator
-from src.llms import GPT
+from src.llms import GPT, DeepSeek
 from src.llms import Qwen_7B_Chat
 from src.tasks.summary import Summary
 from src.tasks.continue_writing import ContinueWriting
@@ -53,6 +53,8 @@ logger.info(args)
 
 if args.model_name.startswith("gpt"):
     llm = GPT(model_name=args.model_name, temperature=args.temperature, max_new_tokens=args.max_new_tokens)
+elif args.model_name.startswith("deepseek"):
+    llm = DeepSeek(model_name=args.model_name, temperature=args.temperature, max_new_tokens=args.max_new_tokens)
 elif args.model_name == "qwen7b":
     llm = Qwen_7B_Chat(model_name=args.model_name, temperature=args.temperature, max_new_tokens=args.max_new_tokens)
 
@@ -106,4 +108,3 @@ datasets = get_task_datasets(args.data_path, args.task)
 for task, dataset in zip(tasks, datasets):
     evaluator = BaseEvaluator(task, llm, retriever, dataset, num_threads=args.num_threads)
     evaluator.run(show_progress_bar=args.show_progress_bar, contain_original_data=args.contain_original_data)
-

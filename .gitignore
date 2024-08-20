@@ -1,4 +1,5 @@
 output*
+src/configs/config.py
 .*
 statistics/
 sentence-transformers/
